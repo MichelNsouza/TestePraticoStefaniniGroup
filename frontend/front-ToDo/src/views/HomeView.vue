@@ -1,14 +1,16 @@
 <template>
-  <main>
+
+  <div class="container-fluid">
     <FormCadastroComponent 
       @atualizar-tarefas="fetchTarefas" 
       :tarefaParaEditar="tarefaParaEditar" 
     />
-    <TabelaComponent 
+      <TabelaComponent 
       :listaTarefas="listaTarefas" 
       @editar-tarefa="prepararEdicao" 
+      @atualizar-tarefas="fetchTarefas" 
     />
-  </main>
+  </div>
 </template>
 
 <script>
@@ -24,7 +26,7 @@ export default {
   data() {
     return {
       tarefaParaEditar: null,
-      listaTarefas: [], // Armazenar a lista de tarefas
+      listaTarefas: [], 
     };
   },
   created() {
@@ -34,13 +36,13 @@ export default {
     async fetchTarefas() {
       try {
         const response = await getAllTarefas();
-        this.listaTarefas = response.data.tarefas; // Atualizar a lista de tarefas
+        this.listaTarefas = response.data.tarefas;
       } catch (error) {
         console.error('Erro ao buscar tarefas:', error);
       }
     },
     prepararEdicao(tarefa) {
-      this.tarefaParaEditar = tarefa; // Passa a tarefa que você deseja editar
+      this.tarefaParaEditar = tarefa; 
     },
   },
 };

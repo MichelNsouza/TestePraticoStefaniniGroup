@@ -41,7 +41,7 @@ class TarefaController extends Controller
     {
         $request->validate([
             'titulo' => 'required|string|max:300|min:3',
-            'descricao' => 'string|max:1000',
+            'descricao' => 'string|max:300|min:3',
             'status' => 'required|string|in:' . implode(',', StatusTarefa::values()), // Validação do status
         ]);
 
@@ -93,7 +93,7 @@ class TarefaController extends Controller
     {
         $request->validate([
             'titulo' => 'required|string|max:300|min:3',
-            'descricao' => 'string|max:1000',
+            'descricao' => 'string|max:300|min:3',
             'status' => 'required|string|in:' . implode(',', StatusTarefa::values()), // Validação do status
         ]);
 

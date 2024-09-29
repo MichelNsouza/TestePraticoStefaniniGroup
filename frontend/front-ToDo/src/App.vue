@@ -18,7 +18,7 @@ export default {
 
   <HeaderComponent />
 
-  <main class="content"> 
+  <main class="main pt-3 bg-dark-subtle"> 
     <router-view />
   </main>
 
@@ -29,10 +29,9 @@ export default {
 <style>
 html {
   scroll-behavior: smooth;
+  min-height: 100vh;
 }
-
-
-.content {
-  min-height: calc(100vh - 100px);
+main{
+  min-height: 100vh;
 }
 </style>
