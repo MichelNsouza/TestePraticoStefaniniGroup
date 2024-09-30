@@ -81,7 +81,7 @@ TestePraticoStefaniniGroup/
 * docker instalado
 * docker compose instalado
 
-### Execução
+### Passo a passo
 Certifique-se de que o backend está configurado para se conectar ao MySQL usando as variáveis de ambiente definidas no docker-compose.yml no `.env`
 
 ```
