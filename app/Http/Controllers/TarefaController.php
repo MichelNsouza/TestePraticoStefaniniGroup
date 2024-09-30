@@ -131,4 +131,17 @@ class TarefaController extends Controller
             ],HttpResponse::HTTP_NOT_FOUND);
         }
     }
+    
+    public function buscarPorTitulo(Request $request)
+    {
+
+        $titulo = $request->query('titulo');
+
+        if (!$titulo) {
+            return Tarefa::all();
+        }
+        $tarefas = Tarefa::where('titulo', 'like', '%' . $titulo . '%')->get();
+
+        return response()->json($tarefas);
+    }
 }

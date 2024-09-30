@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 */
 
 Route::apiResource('tarefas', TarefaController::class);
+
+Route::get('/tarefas', [TarefaController::class, 'buscarPorTitulo']);
