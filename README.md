@@ -184,7 +184,7 @@ http://localhost:8000/api/tarefas
 
 ## Bônus
 
-Se desejar o projeto esta ativo também em:
+Se prefer o projeto esta ativo também em:
 
 Front-end 
 ```
@@ -195,7 +195,10 @@ Back-end
 https://apitodoliststefaninigroup.vercel.app/api/api/tarefas
 ```
 
-Deploy de ambos no vercel.
-Banco de dados MySql na freehostia
-Obs: Nativamente o vercel não faz o deploy em aplicações laravel e em api's, mas com algumas configurações alternativas (obrigado indianos do youtube <3 ), conseguimos subir a api, por razão dessas configurações o caminho fica `/api/api/tarefas` :) ;
+* Deploy de ambos no vercel.
+
+* Banco de dados MySql na freehostia
+
+* OBS: 
+    Nativamente o vercel não faz o deploy em aplicações laravel e em api's, mas com algumas configurações alternativas (obrigado indianos do youtube <3 ), conseguimos subir a api, por razão dessas configurações o caminho fica `/api/api/tarefas` :) ;
 
