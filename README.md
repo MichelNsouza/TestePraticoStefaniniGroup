@@ -1,182 +1,66 @@
-# Teste Prático Stefanini Group
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Este projeto é um teste pratico de aplicação full-stack que integra um frontend desenvolvido com Vue.js 3 e um backend construído com Laravel. 
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## Endpoints
+## About Laravel
 
-1. **Listar todas as tarefas**
-   - **Método HTTP:** `GET`
-   - **Rota:** `/api/tarefas`
-   - **Descrição:** Recupera uma lista de todas as tarefas.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-2. **Criar uma nova tarefas**
-   - **Método HTTP:** `POST`
-   - **Rota:** `/api/tarefas`
-   - **Descrição:** Cria uma nova tarefa. 
-   É necessário enviar os dados da tarefa no corpo da requisição (modelo json mais a baixo).
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-3. **Mostrar uma tarefas específica por id**
-   - **Método HTTP:** `GET`
-   - **Rota:** `/api/tarefas/{id}`
-   - **Descrição:** Recupera as informações de um tarefa tarefas baseado no `id`.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-3. **Mostrar uma tarefas específica por nome**
-   - **Método HTTP:** `GET`
-   - **Rota:** `/api/tarefas/{titulo}`
-   - **Descrição:** Recupera as informações de um tarefa tarefas baseado no `titulo`.
+## Learning Laravel
 
-4. **Atualizar um tarefa específico**
-   - **Método HTTP:** `PUT`
-   - **Rota:** `/api/tarefas/{titulo}`
-   - **Descrição:** Atualiza uma tarefa específica baseado no `id`. Os dados atualizados devem ser enviados no corpo da requisição. (modelo json mais a baixo).
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-5. **Excluir uma tarefa específica**
-   - **Método HTTP:** `DELETE`
-   - **Rota:** `/api/tarefas/{titulo}`
-   - **Descrição:** Remove um tarefa específica baseado no `id`.
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-### Estrutura Json da tarefa
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-Para criar ou atualizar uma tarefa, utilize o seguinte modelo JSON:
+## Laravel Sponsors
 
-```json
-{
-   "titulo": "Programar em php",
-   "descricao": "php não morreu",
-   "status": "em andamento",
-}
-```
-A chave `status` é um enum, ou seja, os valores são limitados a valores pré-definidos, nesse caso: `não iniciado`, `em andamento` e `concluído`.
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-## Estrutura do Projeto
+### Premium Partners
 
-```
-TestePraticoStefaniniGroup/
-├── frontend/
-│   └── front-ToDo/
-│       ├── src/
-│       ├── public/
-│       ├── package.json
-│       └── ...
-└── backend/
-    └── api-ToDo/
-        ├── routes/
-        ├── controllers/
-        ├── models/
-        ├── database/
-        ├── ...
-```
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
 
-* **frontend/front-ToDo:** Contém todos os arquivos do projeto Vue.js, incluindo componentes, estilos e lógica de negócios.
+## Contributing
 
-* **Consumo da API:** O front utiliza o cliente HTTP Axios no Vue.js para fazer requisições à API Laravel.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-* **backend/api-ToDo:** Contém a aplicação Laravel, responsável pela API RESTful que alimenta o frontend.
+## Code of Conduct
 
-# Configuração do Ambiente
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Execução com docker
-### Pré-requisitos
-* Clonar o projeto
-* docker instalado
-* docker compose instalado
+## Security Vulnerabilities
 
-### Passo a passo
-Certifique-se de que o backend está configurado para se conectar ao MySQL usando as variáveis de ambiente definidas no docker-compose.yml no `.env`
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-```
-TestePraticoStefaniniGroup/
-├── frontend/
-│   └── front-ToDo/
-│       ├── src/
-│       ├── public/
-│       ├── package.json
-│       └── ...
-└── backend/
-    └── api-ToDo/
-        ├── routes/
-        ├── controllers/
-        ├── models/
-        ├── .env <-(aqui)
-        ├── ...
-```
+## License
 
-      DB_CONNECTION=mysql
-      DB_HOST=mysql
-      DB_PORT=3307
-      DB_DATABASE=todo_database
-      DB_USERNAME=todo_user
-      DB_PASSWORD=todo_password
-   
-Em seguida certifique-se de que você está na pasta raiz do projeto (TestePraticoStefaniniGroup/).
-
-Execute o seguinte comando:
-
-```bash
-   docker-compose up --build
-```
-
-## Execução local
-
-### Pré-requisitos
-* Clonar o projeto
-* Node.js e npm (ou yarn) instalados
-* Composer instalado
-* Um banco de dados MySQL configurado
-
-### Instalação das Dependências
-
-1. **Navegue até a pasta frontend/front-ToDo:**
-   ```bash
-   cd TestePraticoStefaniniGroup/frontend/front-ToDo
-   ```
-2. **Instale as dependências do Vue.js:**
-   ```bash
-   npm install
-   ```
-
-3. **Navegue até a pasta backend/api-ToDo:**
-   ```bash
-   cd ../backend/api-ToDo
-   ```
-4. **Instale as dependências do Laravel:**
-   ```bash
-   composer install
-   ```
-
-### Configuração do Banco de Dados
-* **Edite o arquivo .env** na pasta backend/api-ToDo para configurar as credenciais do seu banco de dados.
-
-* **Execute as migrations do Laravel:**
-   ```bash
-   php artisan migrate
-   ```
-
-## Executando o Projeto
-
-### Em modo de Desenvolvimento
-
-1. **Inicie o servidor de desenvolvimento do Vue.js:**
-   ```bash
-   cd TestePraticoStefaniniGroup/frontend/front-ToDo
-   npm run dev
-   ```
-
-2. **Inicie o servidor de desenvolvimento do Laravel:**
-   ```bash
-   cd ../backend/api-ToDo
-   php artisan serve
-   ```
-
-## Conclusão
- 
-E pronto, se tudo deu certo, a aplicação esta diponivel em:
-
-Front-end 
-```
-http://localhost:5173/
-```
-Back-end 
-```
-http://localhost:8000/api/tarefas
-```
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
