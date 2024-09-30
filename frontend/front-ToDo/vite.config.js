@@ -15,6 +15,8 @@ export default defineConfig({
     },
   },
   server: {
+    host: '0.0.0.0', // Escuta em todas as interfaces de rede
+    port: 5173, // Opcional, caso deseje garantir a porta
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:8000', // URL da sua API Laravel

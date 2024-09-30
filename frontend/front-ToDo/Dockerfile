@@ -1,22 +1,23 @@
-# Dockerfile - Frontend
+# Frontend Dockerfile
+FROM node:16
 
-# Etapa de build
-FROM node:18 as build
-
+# Define o diretório de trabalho
 WORKDIR /app
 
+# Copia os arquivos do projeto
 COPY package*.json ./
+
+# Instala as dependências
 RUN npm install
 
+# Copia o restante do código do projeto
 COPY . .
 
+# Constrói o projeto
 RUN npm run build
 
-# Etapa de produção
-FROM nginx:alpine
+# Expondo a porta padrão
+EXPOSE 5173
 
-COPY --from=build /app/dist /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Comando para iniciar o servidor
+CMD ["npm", "run", "serve"]

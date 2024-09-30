@@ -1,15 +1,33 @@
-# Dockerfile - Backend
+# Backend Dockerfile
+FROM php:8.1-fpm
 
-FROM node:18
+# Instala dependências necessárias
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libzip-dev \
+    unzip \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd pdo pdo_mysql zip
+# Habilita extensões do PHP
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd zip
 
-WORKDIR /app
+# Define o diretório de trabalho
+WORKDIR /var/www
 
-COPY package*.json ./
-
-RUN npm install
-
+# Copia os arquivos do projeto
 COPY . .
 
-EXPOSE 3000
+# Instala as dependências do Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-CMD ["npm", "start"]
+# Instala dependências do Laravel
+RUN composer install
+
+# Expondo a porta padrão
+EXPOSE 8000
+
+# Comando para iniciar o servidor
+CMD ["php", "artisan", "serve", "--host=0.0.0.0"]
