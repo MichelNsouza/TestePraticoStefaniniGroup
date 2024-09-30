@@ -18,7 +18,7 @@ export default {
 
   <HeaderComponent />
 
-  <main class="main pt-3 bg-dark-subtle"> 
+  <main class="main pt-3"> 
     <router-view />
   </main>
 
@@ -33,5 +33,9 @@ html {
 }
 main{
   min-height: 100vh;
+  background-color: #7f8ee1;
+}
+.bg-azul{
+    background-color: #2338af ;
 }
 </style>

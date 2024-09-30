@@ -1,12 +1,19 @@
+<style>
+.bg-form{
+ background-color:#222f77; 
+}
+
+</style>
+
 <template>
 
     <template v-if="alerta">
         <AlertComponent class="mx-4 text-center mx-auto w-50" :type="tipoAlerta" :message="mensagem" />
     </template>
 
-    <div class="d-flex row justify-content-center d-sm-block text-center px-5 pt-3 mx-auto">
-        <p class="h2">{{ tarefaParaEditar ? 'Editar Tarefa' : 'Criar Tarefa' }}</p>
-        <form class="row g-3 align-items-center justify-content-center" @submit.prevent="enviarTarefa">
+    <div class="container p-3 mt-4 bg-tabela bg-form shadow rounded d-flex row justify-content-center text-center mx-auto d-sm-block ">
+        <p class="h2 text-white">{{ tarefaParaEditar ? 'Editar Tarefa' : 'Criar Tarefa' }}</p>
+        <form class="row pb-4 g-3 align-items-center justify-content-center" @submit.prevent="enviarTarefa">
     <div class="col-md-3 col-lg-2">
         <input class="form-control" v-model="tarefa.titulo" placeholder="Título" required />
     </div>
@@ -21,7 +28,7 @@
         </select>
     </div>
     <div class="col-md-3 col-lg-2">
-        <button class="btn bg-success bg-opacity-75 text-black w-100" type="submit">
+        <button class="btn bg-success text-white w-100" type="submit">
             {{ tarefaParaEditar ? 'Salvar Alterações' : 'Adicionar Tarefa' }}
         </button>
     </div>

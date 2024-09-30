@@ -4,9 +4,9 @@
     <AlertComponent :type="tipoAlerta" :message="mensagem" />
   </template>
 
-  <div class="container mt-5" >
+  <div class="container p-4 mt-5 bg-tabela shadow rounded" >
     <div class="row table-responsive">
-      <p class="h3 text-center">Minhas Tarefas</p>
+      <p class="h3 text-center text-white">Minhas Tarefas</p>
       <table class="table table-hover table-secondary text-center">
         <thead class="">
           <tr>
@@ -80,3 +80,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.bg-tabela{
+ background-color:#222f77; 
+}
+</style>
