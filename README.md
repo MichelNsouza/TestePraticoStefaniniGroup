@@ -82,18 +82,33 @@ TestePraticoStefaniniGroup/
 * docker compose instalado
 
 ### Execução
-Certifique-se de que o backend está configurado para se conectar ao MySQL usando as variáveis de ambiente definidas no docker-compose.yml no `.env` com:
+Certifique-se de que o backend está configurado para se conectar ao MySQL usando as variáveis de ambiente definidas no docker-compose.yml no `.env`
 
-   `
-   DB_CONNECTION=mysql
-   DB_HOST=mysql
-   DB_PORT=3307
-   DB_DATABASE=todo_database
-   DB_USERNAME=todo_user
-   DB_PASSWORD=todo_password
-   `
+```
+TestePraticoStefaniniGroup/
+├── frontend/
+│   └── front-ToDo/
+│       ├── src/
+│       ├── public/
+│       ├── package.json
+│       └── ...
+└── backend/
+    └── api-ToDo/
+        ├── routes/
+        ├── controllers/
+        ├── models/
+        ├── .env <-(aqui)
+        ├── ...
+```
 
-Certifique-se de que você está na pasta raiz do projeto (TestePraticoStefaniniGroup/).
+      DB_CONNECTION=mysql
+      DB_HOST=mysql
+      DB_PORT=3307
+      DB_DATABASE=todo_database
+      DB_USERNAME=todo_user
+      DB_PASSWORD=todo_password
+   
+Em seguida certifique-se de que você está na pasta raiz do projeto (TestePraticoStefaniniGroup/).
 
 Execute o seguinte comando:
 
@@ -152,3 +167,16 @@ Execute o seguinte comando:
    cd ../backend/api-ToDo
    php artisan serve
    ```
+
+## Conclusão
+ 
+E pronto, se tudo deu certo, a aplicação esta diponivel em:
+
+Front-end 
+```
+http://localhost:5173/
+```
+Back-end 
+```
+http://localhost:8000/api/tarefas
+```
