@@ -73,13 +73,13 @@ TestePraticoStefaniniGroup/
 
 * **backend/api-ToDo:** Contém a aplicação Laravel, responsável pela API RESTful que alimenta o frontend.
 
-## Configuração do Ambiente
-
-## Clone o projeto
+# Configuração do Ambiente
 
 ## Execução com docker
 ### Pré-requisitos
-docker e docker compose instalados.
+* Clonar o projeto
+* docker instalado
+* docker compose instalado
 
 ### Execução
 Certifique-se de que o backend está configurado para se conectar ao MySQL usando as variáveis de ambiente definidas no docker-compose.yml no `.env` com:
@@ -104,6 +104,7 @@ Execute o seguinte comando:
 ## Execução local
 
 ### Pré-requisitos
+* Clonar o projeto
 * Node.js e npm (ou yarn) instalados
 * Composer instalado
 * Um banco de dados MySQL configurado
@@ -138,7 +139,7 @@ Execute o seguinte comando:
 
 ## Executando o Projeto
 
-### Modo de Desenvolvimento
+### Em modo de Desenvolvimento
 
 1. **Inicie o servidor de desenvolvimento do Vue.js:**
    ```bash
