@@ -10,8 +10,7 @@
         <AlertComponent class="mx-4 text-center mx-auto w-50" :type="tipoAlerta" :message="mensagem" />
     </template>
 
-    <div
-        class="container p-3 mt-4 bg-tabela bg-form shadow rounded d-flex row justify-content-center text-center mx-auto d-sm-block ">
+    <div class="container p-3 mt-4 bg-tabela bg-form shadow rounded d-flex row justify-content-center text-center mx-auto d-sm-block ">
         <p class="h2 text-white">{{ tarefaParaEditar ? 'Editar Tarefa' : 'Criar Tarefa' }}</p>
         <form class="row pb-4 g-3 align-items-center justify-content-center" @submit.prevent="enviarTarefa">
             <div class="col-md-3 col-lg-2">

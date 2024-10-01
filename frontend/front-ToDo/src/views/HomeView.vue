@@ -33,7 +33,7 @@ export default {
     async fetchTarefas() {
       try {
         const response = await getAllTarefas();
-        this.listaTarefas = response.data.tarefas;
+        this.listaTarefas = response.data;
       } catch (error) {
         console.error('Erro ao buscar tarefas:', error);
       }

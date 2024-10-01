@@ -3,20 +3,19 @@
     <AlertComponent :type="tipoAlerta" :message="mensagem" />
   </template>
 
-  <div class="container p-4 mt-5 bg-tabela shadow rounded">
+  <div class="container mt-5 p-5 bg-tabela bg-form shadow rounded">
     <div class="row table-responsive">
-      <p class="h3 text-center text-white">Minhas Tarefas</p>
+      <p class="h3 text-white text-center">Minhas Tarefas</p>
 
-      <div class="container mt-5">
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <input type="text" class="form-control" v-model="termoBusca" placeholder="Buscar tarefas por título" />
-          </div>
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <input type="text" class="form-control" v-model="termoBusca" placeholder="Buscar tarefas por título"
+            @input="buscarTarefas" />
         </div>
       </div>
 
       <table class="table table-hover table-secondary text-center">
-        <thead class="">
+        <thead>
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Título</th>
@@ -26,7 +25,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="tarefa in tarefasFiltradas" :key="tarefa.id"
+          <!-- Tabela de tarefas filtradas -->
+          <tr v-for="tarefa in tarefas" :key="tarefa.id"
             :class="tarefa.status === 'concluído' ? 'text-decoration-line-through' : ''">
             <td>{{ tarefa.id }}</td>
             <td>{{ tarefa.titulo }}</td>
@@ -34,100 +34,77 @@
             <td>{{ tarefa.status }}</td>
             <td scope="col">
               <button class="btn bg-warning bg-opacity-75 me-2" @click="editarTarefa(tarefa)">Editar</button>
-
               <button class="btn bg-danger bg-opacity-75" @click="excluirTarefa(tarefa)">Excluir</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <template v-if="tarefasFiltradas.length === 0">
-      <AlertComponent :type="'primary'" :message="'Cadastre uma tarefa!'" />
+
+    <!-- Exibe uma mensagem caso não haja tarefas filtradas -->
+    <template v-if="tarefas.length === 0">
+      <AlertComponent :type="'primary'" :message="'Nenhuma tarefa encontrada!'" />
     </template>
   </div>
 </template>
 
 <script>
 import AlertComponent from '@/components/AlertComponent.vue';
-import { deleteTarefa, getTarefaByTitulo } from '@/services/axios';
+import { deleteTarefa, getTarefaByTitulo, getAllTarefas } from '@/services/axios'; // Certifique-se de que essa função exista no seu serviço
 
 export default {
-  emits: ['editarTarefa', 'atualizarTarefas'],
   props: {
     listaTarefas: {
       type: Array,
-      default: () => []
+      required: true,
     },
-    alerta: {
-      type: String,
-      default: '' // ou algum valor padrão apropriado
-    }
   },
   components: {
     AlertComponent,
   },
   data() {
     return {
-      termoBusca: '',
-      tarefas: this.listaTarefas, // Inicializa tarefas com a prop recebida
+      termoBusca: '', // Termo da busca
+      tarefas: [], // Armazena as tarefas buscadas
     };
   },
-  watch: {
-    termoBusca(newVal) {
-      this.buscarTarefas(); // Chama a busca toda vez que o termo mudar
-    },
-    listaTarefas: {
-      immediate: true,
-      handler(newVal) {
-        this.tarefas = newVal; // Atualiza a lista de tarefas quando a prop mudar
-      },
-    },
+  mounted() {
+    this.carregarTarefas(); // Carrega todas as tarefas ao montar o componente
   },
   methods: {
+    async carregarTarefas() {
+      try {
+        const response = await getAllTarefas(); // Busca todas as tarefas
+        this.tarefas = response.data; // Supondo que a resposta seja um array de tarefas
+      } catch (error) {
+        console.error('Erro ao carregar tarefas:', error);
+        this.tarefas = []; // Limpa as tarefas em caso de erro
+      }
+    },
     async buscarTarefas() {
-      // Se o campo de busca estiver vazio, retorna a lista completa
       if (!this.termoBusca) {
-        this.tarefas = this.listaTarefas;
-        return;
+        return this.carregarTarefas(); // Se o termo de busca estiver vazio, carrega todas as tarefas
       }
 
       try {
         const response = await getTarefaByTitulo(this.termoBusca);
-        this.tarefas = response.data;
+        this.tarefas = response.data; // Supondo que a resposta seja um array de tarefas
       } catch (error) {
         console.error('Erro ao buscar tarefas:', error);
-        this.tarefas = [];
+        this.tarefas = []; // Limpa as tarefas em caso de erro
       }
     },
-
     async excluirTarefa(tarefa) {
       try {
         await deleteTarefa(tarefa.id);
-        this.buscarTarefas();
+        this.carregarTarefas(); // Atualiza a lista de tarefas após exclusão
       } catch (error) {
         console.error('Erro ao excluir a tarefa:', error);
       }
     },
-
     editarTarefa(tarefa) {
       this.$emit('editar-tarefa', tarefa);
     },
   },
-  computed: {
-    tarefasFiltradas() {
-      if (!this.termoBusca) {
-        return this.tarefas; // Exibe todas as tarefas se não houver termo de busca
-      }
-      return this.tarefas.filter(tarefa =>
-        tarefa.titulo.toLowerCase().includes(this.termoBusca.toLowerCase())
-      );
-    },
-  },
 };
 </script>
-
-<style>
-.bg-tabela {
-  background-color: #222f77;
-}
-</style>
