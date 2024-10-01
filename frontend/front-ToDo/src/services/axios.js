@@ -11,6 +11,9 @@ export const getAllTarefas = () => api.get('/tarefas');
 // Obter uma tarefa por ID
 export const getTarefaById = (id) => api.get(`/tarefas/${id}`);
 
+// Obter uma tarefa por titulo
+export const getTarefaByTitulo = (titulo) => api.get(`/tarefas?titulo=${titulo}`);
+
 // Criar uma nova tarefa
 export const createTarefa = (formData) => api.post('/tarefas', formData);
 

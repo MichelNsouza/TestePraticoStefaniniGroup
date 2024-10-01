@@ -1,8 +1,7 @@
 <style>
-.bg-form{
- background-color:#222f77; 
+.bg-form {
+    background-color: #222f77;
 }
-
 </style>
 
 <template>
@@ -11,28 +10,29 @@
         <AlertComponent class="mx-4 text-center mx-auto w-50" :type="tipoAlerta" :message="mensagem" />
     </template>
 
-    <div class="container p-3 mt-4 bg-tabela bg-form shadow rounded d-flex row justify-content-center text-center mx-auto d-sm-block ">
+    <div
+        class="container p-3 mt-4 bg-tabela bg-form shadow rounded d-flex row justify-content-center text-center mx-auto d-sm-block ">
         <p class="h2 text-white">{{ tarefaParaEditar ? 'Editar Tarefa' : 'Criar Tarefa' }}</p>
         <form class="row pb-4 g-3 align-items-center justify-content-center" @submit.prevent="enviarTarefa">
-    <div class="col-md-3 col-lg-2">
-        <input class="form-control" v-model="tarefa.titulo" placeholder="Título" required />
-    </div>
-    <div class="col-md-3 col-lg-3">
-        <input class="form-control" v-model="tarefa.descricao" placeholder="Descrição" required />
-    </div>
-    <div class="col-md-3 col-lg-2">
-        <select class="form-select" v-model="tarefa.status">
-            <option value="não iniciado">Não Iniciado</option>
-            <option value="em andamento">Em Andamento</option>
-            <option value="concluído">Concluído</option>
-        </select>
-    </div>
-    <div class="col-md-3 col-lg-2">
-        <button class="btn bg-success text-white w-100" type="submit">
-            {{ tarefaParaEditar ? 'Salvar Alterações' : 'Adicionar Tarefa' }}
-        </button>
-    </div>
-</form>
+            <div class="col-md-3 col-lg-2">
+                <input class="form-control" v-model="tarefa.titulo" placeholder="Título" required />
+            </div>
+            <div class="col-md-3 col-lg-3">
+                <input class="form-control" v-model="tarefa.descricao" placeholder="Descrição" required />
+            </div>
+            <div class="col-md-3 col-lg-2">
+                <select class="form-select" v-model="tarefa.status">
+                    <option value="não iniciado">Não Iniciado</option>
+                    <option value="em andamento">Em Andamento</option>
+                    <option value="concluído">Concluído</option>
+                </select>
+            </div>
+            <div class="col-md-3 col-lg-2">
+                <button class="btn bg-success text-white w-100" type="submit">
+                    {{ tarefaParaEditar ? 'Salvar Alterações' : 'Adicionar Tarefa' }}
+                </button>
+            </div>
+        </form>
 
     </div>
 </template>
@@ -42,6 +42,7 @@ import AlertComponent from '@/components/AlertComponent.vue';
 import { createTarefa, updateTarefa } from '@/services/axios';
 
 export default {
+    emits: ['atualizarTarefas'],
     props: {
         tarefaParaEditar: {
             type: Object,
@@ -68,9 +69,9 @@ export default {
             immediate: true,
             handler(newValue) {
                 if (newValue) {
-                    this.tarefa = { ...newValue }; 
+                    this.tarefa = { ...newValue };
                 } else {
-                    this.resetForm(); 
+                    this.resetForm();
                 }
             },
         },
@@ -110,7 +111,7 @@ export default {
         },
         async enviarTarefa() {
             try {
-                if (!this.validacaoTitulo() && !this.validacaoDescricao() ) {
+                if (!this.validacaoTitulo() && !this.validacaoDescricao()) {
                     if (this.tarefaParaEditar) {
                         await updateTarefa(this.tarefaParaEditar.id, this.tarefa);
                         console.log('Tarefa atualizada com sucesso');

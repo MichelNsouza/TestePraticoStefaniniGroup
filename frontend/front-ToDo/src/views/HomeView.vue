@@ -29,9 +29,6 @@ export default {
       listaTarefas: [], 
     };
   },
-  created() {
-    this.fetchTarefas();
-  },
   methods: {
     async fetchTarefas() {
       try {
@@ -40,10 +37,14 @@ export default {
       } catch (error) {
         console.error('Erro ao buscar tarefas:', error);
       }
-    },
+  },
     prepararEdicao(tarefa) {
       this.tarefaParaEditar = tarefa; 
     },
+  },
+  
+  created() {
+    this.fetchTarefas();
   },
 };
 </script>

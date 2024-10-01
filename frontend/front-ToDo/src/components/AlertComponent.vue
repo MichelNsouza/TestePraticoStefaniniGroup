@@ -3,12 +3,12 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'primary', 
+      default: 'primary',
     },
-    
+
     message: {
       type: String,
-      required: true, 
+      required: true,
     },
   },
 };
@@ -20,5 +20,4 @@ export default {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
