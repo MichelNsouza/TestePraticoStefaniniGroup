@@ -104,9 +104,9 @@ TestePraticoStefaniniGroup/
       DB_CONNECTION=mysql
       DB_HOST=mysql
       DB_PORT=3307
-      DB_DATABASE=todo_database
-      DB_USERNAME=todo_user
-      DB_PASSWORD=todo_password
+      DB_DATABASE=todo_db
+      DB_USERNAME=root
+      DB_PASSWORD=root_password
    
 Em seguida certifique-se de que você está na pasta raiz do projeto (TestePraticoStefaniniGroup/).
 
